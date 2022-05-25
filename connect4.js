@@ -84,7 +84,7 @@ function makeHtmlBoard() {
 
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 5
-  
+
   return 5;
 }
 
@@ -95,7 +95,7 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   console.log('placeInTable', y, x)
-  
+
   // TODO: make a div and insert into correct table cell
   const piece = document.createElement('div');
   piece.setAttribute('class',`piece p${currPlayer}`);
@@ -136,6 +136,19 @@ function handleClick(evt) {
 
   // switch players
   // TODO: switch currPlayer 1 <-> 2
+  switchPlayer();
+}
+
+/**switch player function, takes currPlayer variable
+ * switched value and returns player num */
+function switchPlayer(){
+  if(currPlayer === 1){
+    currPlayer = 2;
+  }else {
+    currPlayer = 1;
+  }
+ console.log('currplayer', currPlayer)
+
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
