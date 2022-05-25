@@ -35,7 +35,7 @@ function makeBoard() {
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
-
+// TODO: - create el should be const
 function makeHtmlBoard() {
   // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
   const htmlBoard = document.getElementById('board');
@@ -61,7 +61,7 @@ function makeHtmlBoard() {
   for (let y = 0; y < BOARD_HEIGHT; y++) {
     // TODO: Create a table row element and assign to a "row" variable
     let row = document.createElement("tr");
-     row.setAttribute("id", "board");
+    // row.setAttribute("id", "board");
     for (let x = 0; x < BOARD_WIDTH; x++) {
       // TODO: Create a table cell element and assign to a "cell" variable
       let cell = document.createElement("td");
