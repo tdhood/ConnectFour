@@ -23,7 +23,7 @@ function makeBoard() {
   // using nested for-loop, create board
   // using HIEGHT for the first for-loop
   // using WIDTH for the second for-loop
-  
+
   for(let y = 0; y < BOARD_HEIGHT; y++) {
     let row = [];
     for(let x = 0; x < BOARD_WIDTH; x++) {
@@ -38,14 +38,17 @@ function makeBoard() {
 
 function makeHtmlBoard() {
   // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
-
+  const htmlBoard = document.getElementById('board')
   // TODO: add comment for this code
+  // creates top line of game board that users click to excute turn,
+  // and place peice
   let top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
 
   // TODO: add comment for this code
-  for (let x = 0; x < WIDTH; x++) {
+  //for loop that creates cells inside the top row
+  for (let x = 0; x < BOARD_WIDTH; x++) {
     let headCell = document.createElement("td");
     headCell.setAttribute("id", x);
     top.append(headCell);
@@ -55,12 +58,15 @@ function makeHtmlBoard() {
   // dynamically creates the main part of html board
   // uses HEIGHT to create table rows
   // uses WIDTH to create table cells for each row
-  for (let y = 0; y < HEIGHT; y++) {
+  for (let y = 0; y < BOARD_HEIGHT; y++) {
     // TODO: Create a table row element and assign to a "row" variable
-
-    for (let x = 0; x < WIDTH; x++) {
+    let row = document.createElement("tr");
+     row.setAttribute("id", "column-top");
+    for (let x = 0; x < BOARD_WIDTH; x++) {
       // TODO: Create a table cell element and assign to a "cell" variable
-
+      let cell = document.createElement("td");
+      cell.setAttribute("id", `y-${y}-x-${x}`);
+      row.append(cell);
       // TODO: add an id, y-x, to the above table cell element
       // you'll use this later, so make sure you use y-x
 
