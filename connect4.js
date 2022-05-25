@@ -12,7 +12,7 @@ const BOARD_HEIGHT = 6;
 
 let currPlayer = 1; // active player: 1 or 2
 let board = []; // array of rows, each row is array of cells  (board[y][x])
-
+                // may want to change this from let to const
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
  */
@@ -31,14 +31,14 @@ function makeBoard() {
     }
     board.push(row);
   }
-  console.log(board)
+  console.log(board);
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
 function makeHtmlBoard() {
   // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
-  const htmlBoard = document.getElementById('board')
+  const htmlBoard = document.getElementById('board');
   // TODO: add comment for this code
   // creates top line of game board that users click to excute turn,
   // and place peice
@@ -61,7 +61,7 @@ function makeHtmlBoard() {
   for (let y = 0; y < BOARD_HEIGHT; y++) {
     // TODO: Create a table row element and assign to a "row" variable
     let row = document.createElement("tr");
-     row.setAttribute("id", "column-top");
+     row.setAttribute("id", "board");
     for (let x = 0; x < BOARD_WIDTH; x++) {
       // TODO: Create a table cell element and assign to a "cell" variable
       let cell = document.createElement("td");
@@ -74,6 +74,7 @@ function makeHtmlBoard() {
 
     }
     // TODO: append the row to the html board
+    htmlBoard.append(row);
 
   }
 }
