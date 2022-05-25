@@ -7,11 +7,11 @@
  * board fills (tie)
  */
 
-const BOARD_WIDTH = 7;
-const BOARD_HEIGHT = 6;
+const WIDTH = 7;
+const HEIGHT = 6;
 
 let currPlayer = 1; // active player: 1 or 2
-let board = []; // array of rows, each row is array of cells  (board[y][x])
+const board = []; // array of rows, each row is array of cells  (board[y][x])
                 // may want to change this from let to const
 /** makeBoard: create in-JS board structure:
  *    board = array of rows, each row is array of cells  (board[y][x])
@@ -24,9 +24,9 @@ function makeBoard() {
   // using HIEGHT for the first for-loop
   // using WIDTH for the second for-loop
 
-  for(let y = 0; y < BOARD_HEIGHT; y++) {
+  for(let y = 0; y < HEIGHT; y++) {
     let row = [];
-    for(let x = 0; x < BOARD_WIDTH; x++) {
+    for(let x = 0; x < WIDTH; x++) {
       row.push(null);
     }
     board.push(row);
@@ -35,21 +35,21 @@ function makeBoard() {
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
-// TODO: - create el should be const
+
 function makeHtmlBoard() {
   // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
   const htmlBoard = document.getElementById('board');
   // TODO: add comment for this code
   // creates top line of game board that users click to excute turn,
   // and place peice
-  let top = document.createElement("tr");
+  const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
   top.addEventListener("click", handleClick);
 
   // TODO: add comment for this code
   //for loop that creates cells inside the top row
-  for (let x = 0; x < BOARD_WIDTH; x++) {
-    let headCell = document.createElement("td");
+  for (let x = 0; x < WIDTH; x++) {
+    const headCell = document.createElement("td");
     headCell.setAttribute("id", x);
     top.append(headCell);
   }
@@ -58,13 +58,13 @@ function makeHtmlBoard() {
   // dynamically creates the main part of html board
   // uses HEIGHT to create table rows
   // uses WIDTH to create table cells for each row
-  for (let y = 0; y < BOARD_HEIGHT; y++) {
+  for (let y = 0; y < HEIGHT; y++) {
     // TODO: Create a table row element and assign to a "row" variable
-    let row = document.createElement("tr");
+    const row = document.createElement("tr");
     // row.setAttribute("id", "board");
-    for (let x = 0; x < BOARD_WIDTH; x++) {
+    for (let x = 0; x < WIDTH; x++) {
       // TODO: Create a table cell element and assign to a "cell" variable
-      let cell = document.createElement("td");
+      const cell = document.createElement("td");
       cell.setAttribute("id", `y-${y}-x-${x}`);
       row.append(cell);
       // TODO: add an id, y-x, to the above table cell element
@@ -78,18 +78,30 @@ function makeHtmlBoard() {
 
   }
 }
+//
 
 /** findSpotForCol: given column x, return bottom empty y (null if filled) */
 
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 5
+  
   return 5;
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
 
+//add div and attributes (p1 or p2) and make round
+//change color depending on player number
+
 function placeInTable(y, x) {
+  console.log('placeInTable', y, x)
+  
   // TODO: make a div and insert into correct table cell
+  const piece = document.createElement('div');
+  piece.setAttribute('class',`piece p${currPlayer}`);
+  //piece.setAttribute('class', `p${currPlayer}`);
+  document.getElementById(`y-${y}-x-${x}`).append(piece)
+
 }
 
 /** endGame: announce game end */
