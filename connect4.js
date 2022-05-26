@@ -83,11 +83,16 @@ function makeHtmlBoard() {
 /** findSpotForCol: given column x, return bottom empty y (null if filled) */
 
 function findSpotForCol(x) {
+
   // TODO: write the real version of this, rather than always returning 5
-
-  return 5;
+  for(let y = HEIGHT-1; y >= 0; y--){
+    if(board[y][x] === null){
+      board[y][x] = currPlayer;
+      return y;
+    }
+  }
+  console.log(board)
 }
-
 /** placeInTable: update DOM to place piece into HTML table of board */
 
 //add div and attributes (p1 or p2) and make round
@@ -111,10 +116,11 @@ function endGame(msg) {
 }
 
 /** handleClick: handle click of column top to play piece */
-
+//update board variable grab board
 function handleClick(evt) {
   // get x from ID of clicked cell
   let x = +evt.target.id;
+
 
   // get next spot in column (if none, ignore click)
   let y = findSpotForCol(x);
@@ -130,6 +136,12 @@ function handleClick(evt) {
   if (checkForWin()) {
     return endGame(`Player ${currPlayer} won!`);
   }
+  if(checkBoardFilled(board)) {
+    alert('draw')
+  } else{
+    console.log('not filled')
+  }
+
 
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
@@ -137,6 +149,7 @@ function handleClick(evt) {
   // switch players
   // TODO: switch currPlayer 1 <-> 2
   switchPlayer();
+
 }
 
 /**switch player function, takes currPlayer variable
@@ -149,6 +162,16 @@ function switchPlayer(){
   }
  console.log('currplayer', currPlayer)
 
+}
+/**check for filled; looks at board arr if no more null
+ * returns board full
+ */
+function checkBoardFilled(board){
+  console.log('check board filled')
+  console.log(board)
+
+  let filled = board.every((y) => board[y] === null);
+  return filled;
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
