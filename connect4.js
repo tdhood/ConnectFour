@@ -180,7 +180,11 @@ function checkBoardFilled(board){
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
 
-function checkForWin() {
+function checkForWin(board, position) {
+  console.log('checkForWin')
+  //if [y] === undefined, break;
+  position = [y, x]
+  board[position[0]][position[1]]
 
   /** _win:
    * takes input array of 4 cell coordinates [ [y, x], [y, x], [y, x], [y, x] ]
@@ -188,10 +192,10 @@ function checkForWin() {
    * currPlayer
    */
   function _win(cells) {
-    //if [y] === undefined, break;
     
     // TODO: Check four cells to see if they're all legal & all color of current
     // player
+    return cells.every(n => n === currPlayer)
 
   }
 
@@ -200,6 +204,11 @@ function checkForWin() {
   // ways to win: horizontal, vertical, diagonalDR, diagonalDL
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
+     //iterate through horiz 
+        for (let z = 0; z < horiz.length; z++);  {
+          horiz
+        }
+
       // TODO: assign values to the below variables for each of the ways to win
       // horizontal has been assigned for you
       // each should be an array of 4 cell coordinates:
